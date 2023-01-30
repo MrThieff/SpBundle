@@ -1,5 +1,5 @@
 {
-    "name": "mrthief/sp-bundle",
+    "name": "mrthieff/sp-bundle",
     "license": "MIT",
     "type": "symfony-bundle",
     "description": "Light SAML2 SP Symfony Bundle",

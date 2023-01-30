@@ -1,0 +1,20 @@
+version: '3.1'
+services:
+    php:
+        build:
+            context: ./
+            dockerfile: docker/php-cli.Dockerfile
+        stdin_open: true
+        tty: true
+        volumes:
+            - ./:/app:rw
+            # It helps install packages from cache
+            - competitors-pricing-composer-cache:/root/.composer
+            # We mount folder "~/.ssh" to use SSH keys for access to private git repositories
+            # See "./docker/dev/php/.bashrc" to figure out how it works
+            - ./docker/.bashrc:/root/.bashrc
+        environment:
+            DOCKER_PHP__SSH_IDENTITY_FILE: id_rsa
+
+volumes:
+    competitors-pricing-composer-cache:
