@@ -26,7 +26,8 @@ class SamlToken extends AbstractToken
         return count($this->getRoleNames()) > 0;
     }
 
-    public function getCredentials(): mixed {
+    public function getCredentials()
+    {
         // deprecated
     }
 }

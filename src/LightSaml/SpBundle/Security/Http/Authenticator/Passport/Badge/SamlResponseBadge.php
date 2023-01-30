@@ -7,7 +7,8 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\BadgeInterface;
 
 class SamlResponseBadge implements BadgeInterface {
 
-    private Response $response;
+    /** @var Response */
+    private $response;
 
     public function __construct(Response $response) {
         $this->response = $response;

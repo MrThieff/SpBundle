@@ -29,23 +29,44 @@ use Symfony\Component\Security\Http\HttpUtils;
 
 class SamlServiceProviderAuthenticator implements AuthenticatorInterface, AuthenticationEntryPointInterface {
 
-    private string $loginPath;
-    private string $checkPath;
+    /** @var string */
+    private $loginPath;
+    /** @var string */
+    private $checkPath;
 
-    private UsernameMapperInterface $usernameMapper;
-    private ProfileBuilderInterface $profileBuilder;
-    private BuildContainerInterface $buildContainer;
-    private UserProviderInterface $userProvider;
-    private ?UserCreatorInterface $userCreator;
-    private AttributeMapperInterface $attributeMapper;
-    private HttpUtils $httpUtils;
+    /** @var UsernameMapperInterface */
+    private $usernameMapper;
+    /** @var ProfileBuilderInterface */
+    private $profileBuilder;
+    /** @var BuildContainerInterface */
+    private $buildContainer;
+    /** @var UserProviderInterface */
+    private $userProvider;
+    /** @var UserCreatorInterface|null */
+    private $userCreator;
+    /** @var AttributeMapperInterface */
+    private $attributeMapper;
+    /** @var HttpUtils */
+    private $httpUtils;
 
-    private AuthenticationSuccessHandlerInterface $successHandler;
-    private AuthenticationFailureHandlerInterface $failureHandler;
+    /** @var AuthenticationSuccessHandlerInterface */
+    private $successHandler;
+    /** @var AuthenticationFailureHandlerInterface */
+    private $failureHandler;
 
-    public function __construct(string $loginPath, string $checkPath, UsernameMapperInterface $usernameMapper, ProfileBuilderInterface $profileBuilder, BuildContainerInterface $buildContainer,
-                                UserProviderInterface $userProvider,  AttributeMapperInterface $attributeMapper, HttpUtils $httpUtils,
-                                AuthenticationSuccessHandlerInterface $successHandler, AuthenticationFailureHandlerInterface $failureHandler, ?UserCreatorInterface $userCreator = null) {
+    public function __construct(
+        string                                $loginPath,
+        string                                $checkPath,
+        UsernameMapperInterface               $usernameMapper,
+        ProfileBuilderInterface               $profileBuilder,
+        BuildContainerInterface               $buildContainer,
+        UserProviderInterface                 $userProvider,
+        AttributeMapperInterface              $attributeMapper,
+        HttpUtils                             $httpUtils,
+        AuthenticationSuccessHandlerInterface $successHandler,
+        AuthenticationFailureHandlerInterface $failureHandler,
+        ?UserCreatorInterface                 $userCreator = null
+    ) {
         $this->loginPath = $loginPath;
         $this->checkPath = $checkPath;
         $this->usernameMapper = $usernameMapper;

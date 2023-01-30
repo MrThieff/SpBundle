@@ -20,7 +20,7 @@ class SimpleUsernameMapper implements UsernameMapperInterface
     const NAME_ID = '@name_id@';
 
     /** @var string[] */
-    private array $attributes;
+    private $attributes;
 
     /**
      * @param string[] $attributes
